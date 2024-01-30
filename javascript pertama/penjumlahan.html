@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Penjumlahan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container white-box">
+        <p><b>Angka 1</b></p>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Angka 1" aria-label="Angka 1" aria-describedby="basic-addon1" id="angka1">
+        </div> 
+        <p><b>Angka 2</b></p>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Angka 2" aria-label="Angka 2" aria-describedby="basic-addon1" id="angka2">
+        </div> 
+        <div class="d-flex justify-content-center px-10 py-3">
+            <button type="submit" class="btn btn-success w-100 mx-auto" onclick="calculate()">Calculate</button>
+          </div>
+        <script>
+            function calculate() {
+              var angka1 = parseFloat(document.getElementById('angka1').value);
+              var angka2 = parseFloat(document.getElementById('angka2').value);
+        
+              var hasil_penjumlahan = angka1 + angka2;
+              var hasil_pengurangan = angka1 - angka2;
+              var hasil_pengkalian = angka1 * angka2;
+              if (angka1 == 0) {
+                hasil_pembagian = "invalid number"
+              } else {
+                  var hasil_pembagian = angka1 / angka2;
+              }
+        
+              document.getElementById('hasil_penjumlahan').innerHTML = 'Hasil penjumlahan: ' + hasil_penjumlahan;
+              document.getElementById('hasil_pengurangan').innerHTML = 'Hasil pengurangan: ' + hasil_pengurangan;
+              document.getElementById('hasil_pengkalian').innerHTML = 'Hasil pengkalian: ' + hasil_pengkalian;
+              document.getElementById('hasil_pembagian').innerHTML = 'Hasil pembagian: ' + hasil_pembagian;
+            }
+        </script>
+        <div id="hasil_penjumlahan"></div>
+        <div id="hasil_pengurangan"></div>
+        <div id="hasil_pengkalian"></div>
+        <div id="hasil_pembagian"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
