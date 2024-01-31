@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Form</title>
+  <style>
+    .navbar {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .white-box {
+      background-color: #fff; /* Set background color to white */
+      padding: 20px; /* Add padding for content inside the box */
+      border-radius: 8px; /* Add border-radius for rounded corners */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+      margin-top: 20px; /* Add margin for spacing */
+    }
+    .inner-container {
+      margin-bottom: 0px; /* Add margin between inner containers */
+    }
+  </style>
+</head>
+<body onload="firstFunc()">
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">PRODUCT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">GALLERY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">BLOG</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">INVENTORY</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container white-box">
+    <div class="row inner-container">
+      <div class="col-md-3">
+        <img src="photo profile.jpg" width="120"/>
+      </div>
+      <div class="col-md-4" style="padding-bottom: 10px;">
+        <div id="nama" style="font-weight:bold; font-size: 1.5em"></div>
+        <div id="role" style="padding-bottom: 10px;"></div>
+        <button type="button" class="btn btn-primary">Kontak</button>
+        <button type="button" class="btn btn-outline-success">Resume</button>
+      </div>
+      <div class="col-md-5">
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-5"><b>Availability</b></div>
+              <div class="col-sm-7" id="availability"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5"><b>Usia</b></div>
+                <div class="col-sm-7" id="age"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5"><b>Lokasi</b></div>
+                <div class="col-sm-7" id="location"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5"><b>Pengalaman</b></div>
+                <div class="col-sm-7" id="experience"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5"><b>Email</b></div>
+                <div class="col-sm-7" id="email"></div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="container white-box">
+    <p><b>Name</b></p>
+    <div class="input-group mb-3">
+        <input type="text" id="nama_input" onkeyup="stoppedTyping()" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    <p><b>Role</b></p>
+    <div class="input-group mb-3">
+        <input type="text" id="role_input" onkeyup="stoppedTyping()" class="form-control" placeholder="Role" aria-label="Username" aria-describedby="basic-addon1" >
+      </div>
+    <p><b>Availability</b></p>
+    <div class="input-group mb-3">
+        <input type="text" id="availability_input" onkeyup="stoppedTyping()" class="form-control" placeholder="Availability" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    <p><b>Age</b></p>
+    <div class="input-group mb-3">
+        <input type="text" id="age_input" onkeyup="stoppedTyping()" class="form-control" placeholder="Age" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    <p><b>Lokasi</b></p>
+    <div class="input-group mb-3">
+        <input type="text" id="location_input" onkeyup="stoppedTyping()" class="form-control" placeholder="Lokasi" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    <p><b>Year Experience</b></p>
+    <div class="input-group mb-3">
+        <input type="text" id="exp_input" onkeyup="stoppedTyping()" class="form-control" placeholder="Year Experience" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    <p><b>Email</b></p>
+    <div class="input-group mb-3">
+        <input type="email" id="email_input" onkeyup="stoppedTyping()" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+      </div>   
+    <div class="d-flex justify-content-center px-10">
+        <button id="submit_button" type="submit" class="btn btn-success w-100 mx-auto" onclick="submit()" disabled>Submit</button>
+      </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  function submit() {
+    let nama_input = document.getElementById('nama_input').value;
+    let role_input = document.getElementById('role_input').value;
+    let availability_input = document.getElementById('availability_input').value;
+    let age_input = document.getElementById('age_input').value;
+    let location_input = document.getElementById('location_input').value;
+    let exp_input = document.getElementById('exp_input').value;
+    let email_input = document.getElementById('email_input').value;
+
+    document.getElementById('nama').innerHTML = nama_input == "" ? "Nama Anda" : nama_input;
+    document.getElementById('role').innerHTML = role_input == "" ? "-" : role_input;
+    document.getElementById('availability').innerHTML = availability_input == "" ? "-" : availability_input;
+    document.getElementById('age').innerHTML = age_input == "" ? "-" : age_input;
+    document.getElementById('location').innerHTML = location_input == "" ? "-" : location_input;
+    document.getElementById('experience').innerHTML = exp_input == "" ? "-" : exp_input;
+    document.getElementById('email').innerHTML = email_input == "" ? "-" : email_input;
+
+    document.getElementById('nama_input').value='';
+    document.getElementById('role_input').value='';
+    document.getElementById('availability_input').value='';
+    document.getElementById('age_input').value='';
+    document.getElementById('location_input').value='';
+    document.getElementById('exp_input').value='';
+    document.getElementById('email_input').value='';
+    document.getElementById('submit_button').disabled = true;
+  }
+
+  function stoppedTyping(){
+    let nama_input = document.getElementById('nama_input').value;
+    let role_input = document.getElementById('role_input').value;
+    let availability_input = document.getElementById('availability_input').value;
+    let age_input = document.getElementById('age_input').value;
+    let location_input = document.getElementById('location_input').value;
+    let exp_input = document.getElementById('exp_input').value;
+    let email_input = document.getElementById('email_input').value;
+
+    if(nama_input.length > 0 
+      && role_input.length > 0 
+      && availability_input.length > 0 
+      && age_input.length > 0 
+      && location_input.length > 0 
+      && exp_input !== "" 
+      && email_input.length > 0) { 
+      document.getElementById('submit_button').disabled = false; 
+    } else { 
+      document.getElementById('submit_button').disabled = true;
+    }    
+  }   
+
+  function firstFunc(){
+    document.getElementById('nama').innerHTML = "Nama Anda"
+    document.getElementById('role').innerHTML = "-"
+    document.getElementById('availability').innerHTML = "-"
+    document.getElementById('age').innerHTML = "-"
+    document.getElementById('location').innerHTML = "-"
+    document.getElementById('experience').innerHTML = "-"
+    document.getElementById('email').innerHTML = "-"
+  }
+</script>
+</body>
+</html>
