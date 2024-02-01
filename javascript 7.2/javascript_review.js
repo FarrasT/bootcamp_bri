@@ -220,3 +220,90 @@ function list_prime(num1, num2) {
 
 console.log(`Bilangan prima di antara ${10} dan ${30}: ${list_prime(10, 30)}`)
 console.log(`Bilangan prima di antara ${10} dan ${20}: ${list_prime(1, 5)}`)
+
+// EXERCISE NUMBER 14
+// Fetch Data from API with Callback
+const fetch = require("node-fetch");
+const apiUrl = 'https://api.github.com/users/FarrasT';
+
+function fetch_data_from_api_callback(apiUrl, success_callback, error_callback) {
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+        success_callback(data);
+    })
+    .catch(error => {
+        error_callback(error);
+    });
+}
+
+function handle_success(data) {
+  console.log('Data from API:', data);
+}
+
+function handle_error(error) {
+  console.error('Error fetching data:', error);
+}
+
+fetch_data_from_api_callback(apiUrl, handle_success, handle_error);
+
+// EXERCISE NUMBER 15
+// Fetch Data from API with Promise
+
+function fetch_data_from_api_promise(apiUrl) {
+    return new Promise((resolve, reject) => {
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          resolve(data);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+  }
+  
+  fetch_data_from_api_promise(apiUrl)
+    .then(data => {
+      console.log('Data from API:', data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error.message);
+    });
+
+    // EXERCISE NUMBER 16
+    // Promise Chaining
+    function fetch_data(url) {
+        return fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json()
+            });
+    }
+    
+    // Exercise Promise chaining API
+    const api_url_chaining = 'https://jsonplaceholder.typicode.com/posts/1'
+    
+    fetch_data(api_url_chaining)
+        .then(postData => {
+            console.log('Post Data:', postData)
+            return fetch_data(`https://jsonplaceholder.typicode.com/comments?postId=${postData.id}`)
+        })
+        .then(commentData => {
+            console.log('Comment Data:', commentData);
+        })
+        .catch(error => {
+            console.error('Error:', error)
+        })
