@@ -1,3 +1,6 @@
 go 1.21.5
 
-use ./golang_database
+use (
+	./golang_ut
+	./golang_database
+)
