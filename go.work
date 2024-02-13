@@ -1,6 +1,7 @@
 go 1.21.5
 
 use (
-	./golang_ut
 	./golang_database
+	./golang_jwt
+	./golang_ut
 )
